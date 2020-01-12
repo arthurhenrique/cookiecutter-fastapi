@@ -21,13 +21,9 @@ run:
 deploy:
 	docker-compose build
 	docker-compose up -d
-	@$(MAKE) easter
 
 down:
 	docker-compose down
-
-easter:
-	@ $(SHELL) egg.sh
 
 clean:
 	@find . -name '*.pyc' -exec rm -rf {} \;

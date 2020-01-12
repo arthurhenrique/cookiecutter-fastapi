@@ -24,7 +24,7 @@ In order to create an template to FastAPI projects. :rocket:
 
 
 ## Or Access Redocs Documentation
-> <http://localhost:8080/docs>
+> <http://localhost:8080/redoc>
 
 Project structure
 -----------------

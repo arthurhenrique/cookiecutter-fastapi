@@ -2,7 +2,7 @@ FROM python:3.8.1
 
 ENV PYTHONUNBUFFERED 1
 
-EXPOSE 8000
+EXPOSE 8080
 WORKDIR /app
 
 COPY poetry.lock pyproject.toml ./

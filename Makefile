@@ -7,7 +7,7 @@ help:
 all: clean install test 
 
 test:
-	pytest tests -v
+	poetry run pytest tests -v
 
 install:
 	cp .env.example .env

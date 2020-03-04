@@ -12,7 +12,7 @@ prolado(){
     echo "[RUNNING] http://localhost:8080/docs"
     echo "[CTRL-C] to exit or wait.."
     echo
-    echo "TODO: apply this feature to get dynamic and apply according {{cookiecutter.slug_name}}"
+    echo "TODO: apply this feature to get dynamic and apply according {{cookiecutter.project_slug}}"
 
     
 }
@@ -32,7 +32,7 @@ prooutro(){
     echo "[RUNNING] http://localhost:8080/docs"
     echo "[CTRL-C] to exit or wait..."
     echo
-    echo "TODO: apply this feature to get dynamic and apply according {{cookiecutter.slug_name}}"
+    echo "TODO: apply this feature to get dynamic and apply according {{cookiecutter.project_slug}}"
 }
 
 # Change on: http://patorjk.com/software/taag/#p=display&f=Big%20Money-nw&t={{cookiecutter.project_slug}}

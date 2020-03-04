@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "fastapi-boilerplate"
-version = "0.1.0"
-description = ""
-authors = ["Arthur Henrique <arthur393@gmail.com>"]
+name = "{{cookiecutter.project_slug}}"
+version = "{{cookiecutter.version}}"
+description = "{{cookiecutter.project_short_description}}"
+authors = ["{{cookiecutter.email}}"]
 
 [tool.poetry.dependencies]
 python = "^3.8"

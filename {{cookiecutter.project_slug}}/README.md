@@ -1,15 +1,6 @@
-# fastapi-cookiecutter
+# {{cookiecutter.project_name}}
 
-In order to create an template to FastAPI projects. :rocket:
-
-## Cookiecutter
-
-
-```bash
-pip install cookiecutter
-
-cookiecutter https://github.com/arthurhenrique/fastapi-cookiecutter.git
-```
+{{cookiecutter.project_short_description}}
 
 ## Development Requirements
 

@@ -4,11 +4,17 @@ In order to create an template to FastAPI projects. :rocket:
 
 ## Cookiecutter
 
+Cookiecutter is a CLI tool (Command Line Interface) to create an application boilerplate from a template. It uses a templating system — Jinja2 — to replace or customize folder and file names, as well as file content.
+
+### How can I install?
 
 ```bash
 pip install cookiecutter
+```
 
-cookiecutter https://github.com/arthurhenrique/cookiecutter-fastapi.git
+### How can I generate an FastAPI project?
+```bash
+cookiecutter gh:arthurhenrique/cookiecutter-fastapi
 ```
 
 ## Development Requirements

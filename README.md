@@ -13,9 +13,14 @@ pip install cookiecutter
 ```
 
 ### How can I generate an FastAPI project?
+
 ```bash
 cookiecutter gh:arthurhenrique/cookiecutter-fastapi
 ```
+
+### Hands On
+
+![Example](./docs/example/cookiecutter-fastapi-cli.svg)
 
 ## Development Requirements
 

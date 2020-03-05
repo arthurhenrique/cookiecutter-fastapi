@@ -1,4 +1,4 @@
-# fastapi-cookiecutter
+# cookiecutter-fastapi
 
 In order to create an template to FastAPI projects. :rocket:
 
@@ -8,7 +8,7 @@ In order to create an template to FastAPI projects. :rocket:
 ```bash
 pip install cookiecutter
 
-cookiecutter https://github.com/arthurhenrique/fastapi-cookiecutter.git
+cookiecutter https://github.com/arthurhenrique/cookiecutter-fastapi.git
 ```
 
 ## Development Requirements

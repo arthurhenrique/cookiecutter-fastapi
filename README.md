@@ -1,6 +1,6 @@
 # cookiecutter-fastapi
 
-In order to create an template to FastAPI projects. :rocket:
+In order to create a template to FastAPI projects. :rocket:
 
 ## Cookiecutter
 
@@ -12,7 +12,7 @@ Cookiecutter is a CLI tool (Command Line Interface) to create an application boi
 pip install cookiecutter
 ```
 
-### How can I generate an FastAPI project?
+### How can I generate a FastAPI project?
 
 ```bash
 cookiecutter gh:arthurhenrique/cookiecutter-fastapi

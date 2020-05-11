@@ -1,8 +1,17 @@
 SHELL := /bin/bash
-.PHONY: all clean test install run deploy down easter
 
-help:
-	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
+# Variables definitions
+# -----------------------------------------------------------------------------
+
+ifeq ($(TIMEOUT),)
+TIMEOUT := 60
+endif
+
+# Target section and Global definitions
+# -----------------------------------------------------------------------------
+LOCAL_PATH_MODEL = /opt/ml/model
+
+.PHONY: all clean test install run deploy down easter
 
 all: clean test install run deploy down easter
 
@@ -18,8 +27,7 @@ install:
 run:
 	poetry run uvicorn app.main:app --port 8080 --reload
 
-deploy:
-	@$(MAKE) generate_dot_env
+deploy: generate_dot_env
 	docker-compose build
 	docker-compose up -d
 	@$(MAKE) easter
@@ -32,7 +40,6 @@ generate_dot_env:
 
 easter:
 	@$(SHELL) egg.sh
-
 
 clean:
 	@find . -name '*.pyc' -exec rm -rf {} \;

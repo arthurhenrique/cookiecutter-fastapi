@@ -165,22 +165,6 @@ version = "2.8"
 
 [[package]]
 category = "dev"
-description = "Read metadata from Python packages"
-marker = "python_version < \"3.8\""
-name = "importlib-metadata"
-optional = false
-python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
-version = "1.6.0"
-
-[package.dependencies]
-zipp = ">=0.5"
-
-[package.extras]
-docs = ["sphinx", "rst.linker"]
-testing = ["packaging", "importlib-resources"]
-
-[[package]]
-category = "dev"
 description = "IPython-enabled pdb"
 name = "ipdb"
 optional = false
@@ -250,14 +234,6 @@ parso = ">=0.5.2"
 
 [package.extras]
 testing = ["colorama (0.4.1)", "docopt", "pytest (>=3.9.0,<5.0.0)"]
-
-[[package]]
-category = "main"
-description = "Lightweight pipelining: using Python functions as pipeline jobs."
-name = "joblib"
-optional = false
-python-versions = ">=3.6"
-version = "0.15.1"
 
 [[package]]
 category = "main"
@@ -342,11 +318,6 @@ name = "pluggy"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "0.13.1"
-
-[package.dependencies]
-[package.dependencies.importlib-metadata]
-python = "<3.8"
-version = ">=0.12"
 
 [package.extras]
 dev = ["pre-commit", "tox"]
@@ -434,10 +405,6 @@ packaging = "*"
 pluggy = ">=0.12,<1.0"
 py = ">=1.5.0"
 wcwidth = "*"
-
-[package.dependencies.importlib-metadata]
-python = "<3.8"
-version = ">=0.12"
 
 [package.extras]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
@@ -585,22 +552,9 @@ version = "1.0.1"
 [package.extras]
 dev = ["pytest (>=4.6.2)", "black (>=19.3b0)"]
 
-[[package]]
-category = "dev"
-description = "Backport of pathlib-compatible object wrapper for zip files"
-marker = "python_version < \"3.8\""
-name = "zipp"
-optional = false
-python-versions = ">=3.6"
-version = "3.1.0"
-
-[package.extras]
-docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
-testing = ["jaraco.itertools", "func-timeout"]
-
 [metadata]
-content-hash = "9bda61ca4bc329a6b5f47e481a27125d8505a73829cd7ed205d5d2ead03a5ad1"
-python-versions = "^3.7"
+content-hash = "8655a5dd6355225bd07f4dcd3b193e0797e260ea8f0458de3c75d34edd1b0c32"
+python-versions = "^3.8"
 
 [metadata.files]
 appdirs = [
@@ -665,10 +619,6 @@ idna = [
     {file = "idna-2.8-py2.py3-none-any.whl", hash = "sha256:ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"},
     {file = "idna-2.8.tar.gz", hash = "sha256:c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407"},
 ]
-importlib-metadata = [
-    {file = "importlib_metadata-1.6.0-py2.py3-none-any.whl", hash = "sha256:2a688cbaa90e0cc587f1df48bdc97a6eadccdcd9c35fb3f976a09e3b5016d90f"},
-    {file = "importlib_metadata-1.6.0.tar.gz", hash = "sha256:34513a8a0c4962bc66d35b359558fd8a5e10cd472d37aec5f66858addef32c1e"},
-]
 ipdb = [
     {file = "ipdb-0.12.3.tar.gz", hash = "sha256:5d9a4a0e3b7027a158fc6f2929934341045b9c3b0b86ed5d7e84e409653f72fd"},
 ]
@@ -683,10 +633,6 @@ ipython-genutils = [
 jedi = [
     {file = "jedi-0.15.2-py2.py3-none-any.whl", hash = "sha256:1349c1e8c107095a55386628bb3b2a79422f3a2cab8381e34ce19909e0cf5064"},
     {file = "jedi-0.15.2.tar.gz", hash = "sha256:e909527104a903606dd63bea6e8e888833f0ef087057829b89a18364a856f807"},
-]
-joblib = [
-    {file = "joblib-0.15.1-py3-none-any.whl", hash = "sha256:6825784ffda353cc8a1be573118085789e5b5d29401856b35b756645ab5aecb5"},
-    {file = "joblib-0.15.1.tar.gz", hash = "sha256:61e49189c84b3c5d99a969d314853f4d1d263316cc694bec17548ebaa9c47b6e"},
 ]
 loguru = [
     {file = "loguru-0.4.0-py3-none-any.whl", hash = "sha256:6e3e8d865201f5a301a4eb7563f4c9e979d80fbe6f6fa919b3e3a7e095106c7b"},
@@ -879,8 +825,4 @@ websockets = [
 win32-setctime = [
     {file = "win32_setctime-1.0.1-py3-none-any.whl", hash = "sha256:568fd636c68350bcc54755213fe01966fe0a6c90b386c0776425944a0382abef"},
     {file = "win32_setctime-1.0.1.tar.gz", hash = "sha256:b47e5023ec7f0b4962950902b15bc56464a380d869f59d27dbf9ab423b23e8f9"},
-]
-zipp = [
-    {file = "zipp-3.1.0-py3-none-any.whl", hash = "sha256:aa36550ff0c0b7ef7fa639055d797116ee891440eac1a56f378e2d3179e0320b"},
-    {file = "zipp-3.1.0.tar.gz", hash = "sha256:c599e4d75c98f6798c509911d08a22e6c021d074469042177c8c86fb92eefd96"},
 ]

@@ -24,6 +24,13 @@ class MachineLearningModelHandlerScore(object):
 
     @staticmethod
     def load(file_path: str, load_wrapper_func=joblib.load):
-        if MODEL_PATH.endswith("/"):
-            path = f"{MODEL_PATH}{file_path}"
-        return load_wrapper_func(f"{MODEL_PATH}/{file_path}") or None
+        model = None
+        try:
+            if MODEL_PATH.endswith("/"):
+                path = f"{MODEL_PATH}{file_path}"
+            else:
+                path = f"{MODEL_PATH}/{file_path}"
+            model = load_wrapper_func(path)
+        except Exception:
+            logger.warning(f"Machine learning model at {path} not exists!")
+        return model

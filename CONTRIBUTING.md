@@ -1,20 +1,3 @@
-# {{cookiecutter.project_name}}
-
-{{cookiecutter.project_short_description}}
-
-## Development Requirements
-
-- Python3.8.2
-- Pip
-- Poetry (Python Package Manager)
-
-## M.L Model Environment
-
-```sh
-MODEL_PATH=/root/model/
-MODEL_NAME=model.pkl
-```
-
 ## Installation
 
 ```sh

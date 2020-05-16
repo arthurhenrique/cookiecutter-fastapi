@@ -30,7 +30,11 @@ cookiecutter gh:arthurhenrique/cookiecutter-fastapi
 
 ## Installation
 
-`make install`
+```sh
+python -m venv venv
+source venv/bin/activate
+make install
+```
 
 ## Runnning Localhost
 
@@ -70,3 +74,7 @@ Application parts are:
     └── main.py          - FastAPI application creation and configuration.
     ├──
     tests                - pytest
+
+```
+
+```

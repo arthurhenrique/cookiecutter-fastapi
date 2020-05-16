@@ -17,7 +17,11 @@ MODEL_NAME=model.pkl
 
 ## Installation
 
-`make install`
+```sh
+python -m venv venv
+source venv/bin/activate
+make install
+```
 
 ## Runnning Localhost
 

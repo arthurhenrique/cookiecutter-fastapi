@@ -7,7 +7,7 @@ def preload_model():
     """
     In order to load model on memory to each worker
     """
-    from app.services.predict import MachineLearningModelHandlerScore
+    from services.predict import MachineLearningModelHandlerScore
 
     MachineLearningModelHandlerScore.get_model()
 

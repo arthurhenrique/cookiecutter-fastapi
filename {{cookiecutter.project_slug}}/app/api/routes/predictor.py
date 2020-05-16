@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from app.services.predict import MachineLearningModelHandlerScore
-from app.models.prediction import MachineLearningResponse
+from services.predict import MachineLearningModelHandlerScore
+from models.prediction import MachineLearningResponse
 from typing import Any
 
 router = APIRouter()

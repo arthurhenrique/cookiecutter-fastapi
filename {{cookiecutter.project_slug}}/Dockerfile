@@ -11,5 +11,5 @@ RUN pip install poetry==1.0.* && \
     poetry install --no-dev
 
 COPY . ./
-
-CMD uvicorn --host=0.0.0.0 --port 8080 app.main:app
+ENV PYTHONPATH=app/
+CMD python app/main.py

@@ -24,4 +24,6 @@ class MachineLearningModelHandlerScore(object):
 
     @staticmethod
     def load(file_path: str, load_wrapper_func=joblib.load):
+        if MODEL_PATH.endswith("/"):
+            path = f"{MODEL_PATH}{file_path}"
         return load_wrapper_func(f"{MODEL_PATH}/{file_path}") or None

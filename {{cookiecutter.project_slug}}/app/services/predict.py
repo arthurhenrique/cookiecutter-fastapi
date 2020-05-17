@@ -32,7 +32,7 @@ class MachineLearningModelHandlerScore(object):
                 raise FileNotFoundError
             model = load_wrapper(path)
         except FileNotFoundError:
-            logger.warning(f"Machine learning model at {path} not exists!")
+            logger.error(f"Machine learning model at {path} not exists!")
         except Exception as e:
             logger.error(f"{e}!")
         return model

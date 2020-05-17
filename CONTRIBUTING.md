@@ -1,3 +1,7 @@
+# Contributing
+
+This document is in order you need PR some feature/fix/idea to cookiecutter-fastapi.
+
 ## Development Requirements
 
 - Python3.8.2

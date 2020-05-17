@@ -1,9 +1,10 @@
 from typing import Any
 
 import joblib
+from core.errors import PredictException
 from fastapi import APIRouter, HTTPException
 from loguru import logger
-from models.prediction import MachineLearningResponse, HealthResponse
+from models.prediction import HealthResponse, MachineLearningResponse
 from services.predict import MachineLearningModelHandlerScore as model
 
 router = APIRouter()
@@ -20,9 +21,10 @@ async def predict(data_input: Any = None):
         raise HTTPException(status_code=404, detail=f"'data_input' argument invalid!")
     try:
         prediction = get_prediction(data_input)
-        return MachineLearningResponse(prediction=prediction)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Exception: {e}")
+
+    return MachineLearningResponse(prediction=prediction)
 
 
 @router.get(

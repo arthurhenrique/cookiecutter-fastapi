@@ -1,7 +1,7 @@
 from typing import Any
 
 import joblib
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from loguru import logger
 from models.prediction import MachineLearningResponse, HealthResponse
 from services.predict import MachineLearningModelHandlerScore as model
@@ -18,12 +18,14 @@ async def predict(data_input: Any = None):
     return get_prediction(data_input)
 
 
-@router.get("/health", response_model=HealthResponse, name="health:get-data")
+@router.get(
+    "/health", response_model=HealthResponse, name="health:get-data",
+)
 async def health():
     is_health = False
     try:
         get_prediction("lorem ipsum")
         is_health = True
+        return HealthResponse(status=is_health)
     except Exception:
-        ...
-    return HealthResponse(status=is_health)
+        raise HTTPException(status_code=404, detail="Unhealthy")

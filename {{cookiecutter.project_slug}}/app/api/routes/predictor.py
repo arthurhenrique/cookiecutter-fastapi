@@ -1,10 +1,10 @@
-from fastapi import APIRouter
-
-from services.predict import MachineLearningModelHandlerScore as model
-from models.prediction import MachineLearningResponse
 from typing import Any
+
 import joblib
+from fastapi import APIRouter
 from loguru import logger
+from models.prediction import MachineLearningResponse
+from services.predict import MachineLearningModelHandlerScore as model
 
 router = APIRouter()
 

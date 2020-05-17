@@ -2,11 +2,10 @@ import logging
 import sys
 from typing import List
 
+from core.logging import InterceptHandler
 from loguru import logger
 from starlette.config import Config
 from starlette.datastructures import CommaSeparatedStrings, Secret
-
-from core.logging import InterceptHandler
 
 config = Config(".env")
 
@@ -15,7 +14,7 @@ VERSION = "{{cookiecutter.version}}"
 DEBUG: bool = config("DEBUG", cast=bool, default=False)
 MAX_CONNECTIONS_COUNT: int = config("MAX_CONNECTIONS_COUNT", cast=int, default=10)
 MIN_CONNECTIONS_COUNT: int = config("MIN_CONNECTIONS_COUNT", cast=int, default=10)
-SECRET_KEY: Secret = config("SECRET_KEY", cast=Secret)
+SECRET_KEY: Secret = config("SECRET_KEY", cast=Secret, default="")
 
 PROJECT_NAME: str = config("PROJECT_NAME", default="{{cookiecutter.project_name}}")
 

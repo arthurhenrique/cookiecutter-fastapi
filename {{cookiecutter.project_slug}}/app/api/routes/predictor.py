@@ -16,11 +16,9 @@ get_prediction = lambda data_input: MachineLearningResponse(
 
 @router.get("/predict", response_model=MachineLearningResponse, name="predict:get-data")
 async def predict(data_input: Any = None):
+    if not data_input:
+        raise HTTPException(status_code=404, detail=f"'data_input' argument invalid!")
     try:
-        if not data_input:
-            raise HTTPException(
-                status_code=404, detail=f"'data_input' argument invalid!"
-            )
         prediction = get_prediction(data_input)
         return MachineLearningResponse(prediction=prediction)
     except Exception as e:

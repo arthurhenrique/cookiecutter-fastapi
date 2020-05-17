@@ -1,7 +1,5 @@
 import os
 
-import joblib
-
 from core.config import MODEL_NAME, MODEL_PATH
 from loguru import logger
 
@@ -10,20 +8,20 @@ class MachineLearningModelHandlerScore(object):
     model = None
 
     @classmethod
-    def get_model(cls):
-        if cls.model is None:
-            cls.model = cls.load()
-        return cls.model
-
-    @classmethod
-    def predict(cls, input, method="predict"):
-        clf = cls.get_model()
+    def predict(cls, input, load_wrapper=None, method="predict"):
+        clf = cls.get_model(load_wrapper)
         if hasattr(clf, method):
             return getattr(clf, method)(input)
         raise Exception(f"'{method}' attribute is missing")
 
+    @classmethod
+    def get_model(cls, load_wrapper):
+        if cls.model is None and load_wrapper:
+            cls.model = cls.load(load_wrapper)
+        return cls.model
+
     @staticmethod
-    def load(load_wrapper_func=joblib.load):
+    def load(load_wrapper):
         model = None
         try:
             if MODEL_PATH.endswith("/"):
@@ -32,7 +30,7 @@ class MachineLearningModelHandlerScore(object):
                 path = f"{MODEL_PATH}/{MODEL_NAME}"
             if not os.path.exists(path):
                 raise FileNotFoundError
-            model = load_wrapper_func(path)
+            model = load_wrapper(path)
         except FileNotFoundError:
             logger.warning(f"Machine learning model at {path} not exists!")
         except Exception as e:

@@ -24,7 +24,7 @@ cookiecutter gh:arthurhenrique/cookiecutter-fastapi
 
 ## Development Requirements
 
-- Python3.8.1
+- Python3.8.2
 - Pip
 - Poetry (Python Package Manager)
 
@@ -58,7 +58,7 @@ cookiecutter gh:arthurhenrique/cookiecutter-fastapi
 
 ## Project structure
 
-Files related to application are in the ``app`` or ``tests`` directories.
+Files related to application are in the `app` or `tests` directories.
 Application parts are:
 
     app
@@ -69,4 +69,4 @@ Application parts are:
     ├── services         - logic that is not just crud related.
     └── main.py          - FastAPI application creation and configuration.
     ├──
-    tests                - pytest  
+    tests                - pytest

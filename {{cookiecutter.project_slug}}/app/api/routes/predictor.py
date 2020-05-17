@@ -19,7 +19,7 @@ async def predict(data_input: Any = None):
 
 
 @router.get("/health", response_model=HealthResponse, name="health:get-data")
-async def predict():
+async def health():
     is_health = False
     try:
         get_prediction("lorem ipsum")

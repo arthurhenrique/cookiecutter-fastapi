@@ -1,9 +1,11 @@
 {
-    "full_name": "Your name",
-    "email": "Your address email (eq. you@example.com)",
     "project_name": "Name of the project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
     "project_short_description": "A short description of the project",
+    "machine_learn_model_path": "./ml/model/",
+    "machine_learn_model_name": "model.pkl",
+    "full_name": "Your name",
+    "email": "Your address email (eq. you@example.com)",
     "release_date": "{% now 'local' %}",
     "version": "0.1.0",
     "_extensions": [

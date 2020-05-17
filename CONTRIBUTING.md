@@ -1,6 +1,6 @@
-# {{cookiecutter.project_name}}
+# Contributing
 
-{{cookiecutter.project_short_description}}
+This document is in order you need PR some feature/fix/idea to cookiecutter-fastapi.
 
 ## Development Requirements
 
@@ -8,24 +8,9 @@
 - Pip
 - Poetry (Python Package Manager)
 
-### M.L Model Environment
-
-```sh
-MODEL_PATH={{cookiecutter.machine_learn_model_path}}
-MODEL_NAME={{cookiecutter.machine_learn_model_name}}
-```
-
-### Update /predict
-
-To update your machine learning model, adding your `load` and `method` [change here](app/api/routes/predictor.py#L13) at `predictor.py`
-
 ## Installation
 
-```sh
-python -m venv venv
-source venv/bin/activate
-make install
-```
+`make install`
 
 ## Runnning Localhost
 

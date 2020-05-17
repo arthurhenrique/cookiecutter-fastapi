@@ -1,4 +1,4 @@
-FROM python:3.8.1
+FROM python:3.8.2
 
 ENV PYTHONUNBUFFERED 1
 
@@ -6,10 +6,11 @@ EXPOSE 8080
 WORKDIR /app
 
 COPY poetry.lock pyproject.toml ./
-RUN pip install poetry==1.0.* && \
+RUN pip install --upgrade pip && \
+    pip install poetry && \
     poetry config virtualenvs.create false && \
     poetry install --no-dev
 
 COPY . ./
-
-CMD uvicorn --host=0.0.0.0 --port 8080 app.main:app
+ENV PYTHONPATH app
+CMD python app/main.py

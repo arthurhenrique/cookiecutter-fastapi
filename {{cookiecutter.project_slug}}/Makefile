@@ -7,10 +7,16 @@ ifeq ($(TIMEOUT),)
 TIMEOUT := 60
 endif
 
+ifeq ($(MODEL_PATH),)
+MODEL_PATH := {{cookiecutter.machine_learn_model_path}}
+endif
+
+ifeq ($(MODEL_NAME),)
+MODEL_NAME := {{cookiecutter.machine_learn_model_name}}
+endif
+
 # Target section and Global definitions
 # -----------------------------------------------------------------------------
-LOCAL_PATH_MODEL = /opt/ml/model
-
 .PHONY: all clean test install run deploy down easter
 
 all: clean test install run deploy down easter
@@ -18,14 +24,13 @@ all: clean test install run deploy down easter
 test:
 	poetry run pytest tests -vv --show-capture=all
 
-install:
-	@$(MAKE) generate_dot_env
+install: generate_dot_env
 	pip install --upgrade pip
 	pip install poetry
 	poetry install
 
 run:
-	poetry run uvicorn app.main:app --port 8080 --reload
+	PYTHONPATH=app/ poetry run python app/main.py
 
 deploy: generate_dot_env
 	docker-compose build
@@ -36,10 +41,12 @@ down:
 	docker-compose down
 
 generate_dot_env:
-	cp .env.example .env
+	@if [[ ! -e .env ]]; then \
+		cp .env.example .env; \
+	fi
 
 easter:
-	@$(SHELL) egg.sh
+	./egg.sh
 
 clean:
 	@find . -name '*.pyc' -exec rm -rf {} \;

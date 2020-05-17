@@ -1,30 +1,28 @@
-
 # Python package
 # Create and test a Python package on multiple Python versions.
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
 trigger:
-- master
+  - master
 
 jobs:
+  - job: "Adequacy"
+    variables:
+      DEBUG_LEVEL_FOR_DYNACONF: DEBUG
+    pool:
+      vmImage: "Ubuntu-16.04"
+    strategy:
+      matrix:
+        Python37:
+          python.version: "3.7"
+      maxParallel: 4
 
-- job: 'Adequacy'
-  variables:
-    DEBUG_LEVEL_FOR_DYNACONF: DEBUG
-  pool:
-    vmImage: 'Ubuntu-16.04'
-  strategy:
-    matrix:
-      Python38:
-        python.version: '3.8'
-    maxParallel: 4
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: "$(python.version)"
+          architecture: "x64"
 
-  steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '$(python.version)'
-      architecture: 'x64'
-
-  - bash: make clean install test
-    displayName: 'Adequacy Tests'
+      - bash: make clean install test
+        displayName: "Adequacy Tests"

@@ -8,12 +8,16 @@
 - Pip
 - Poetry (Python Package Manager)
 
-## M.L Model Environment
+### M.L Model Environment
 
 ```sh
 MODEL_PATH={{cookiecutter.machine_learn_model_path}}
 MODEL_NAME={{cookiecutter.machine_learn_model_name}}
 ```
+
+### Update /predict
+
+To update your machine learning model, adding your `load` and `method` [change here](app/api/routes/predictor.py#L13) at `predictor.py`
 
 ## Installation
 

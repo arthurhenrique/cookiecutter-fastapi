@@ -7,12 +7,10 @@ ifeq ($(TIMEOUT),)
 TIMEOUT := 60
 endif
 
-ifeq ($(LOCAL_PATH_MODEL),)
-LOCAL_PATH_MODEL = /opt/ml/model
-endif
-
 # Target section and Global definitions
 # -----------------------------------------------------------------------------
+LOCAL_PATH_MODEL = /opt/ml/model
+
 .PHONY: all clean test install run deploy down easter
 
 all: clean test install run deploy down easter
@@ -20,7 +18,8 @@ all: clean test install run deploy down easter
 test:
 	poetry run pytest tests -vv --show-capture=all
 
-install: generate_dot_env
+install:
+	@$(MAKE) generate_dot_env
 	pip install --upgrade pip
 	pip install poetry
 	poetry install
@@ -37,12 +36,10 @@ down:
 	docker-compose down
 
 generate_dot_env:
-	@if [[ ! -e .env ]]; then \
-		cp .env.example .env; \
-	fi
+	cp .env.example .env
 
 easter:
-	./egg.sh
+	@$(SHELL) egg.sh
 
 clean:
 	@find . -name '*.pyc' -exec rm -rf {} \;

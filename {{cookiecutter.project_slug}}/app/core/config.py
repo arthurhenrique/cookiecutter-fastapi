@@ -15,7 +15,7 @@ VERSION = "{{cookiecutter.version}}"
 DEBUG: bool = config("DEBUG", cast=bool, default=False)
 MAX_CONNECTIONS_COUNT: int = config("MAX_CONNECTIONS_COUNT", cast=int, default=10)
 MIN_CONNECTIONS_COUNT: int = config("MIN_CONNECTIONS_COUNT", cast=int, default=10)
-SECRET_KEY: Secret = config("SECRET_KEY", cast=Secret, default="")
+SECRET_KEY: Secret = config("SECRET_KEY", cast=Secret)
 
 PROJECT_NAME: str = config("PROJECT_NAME", default="{{cookiecutter.project_name}}")
 

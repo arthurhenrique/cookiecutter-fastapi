@@ -8,6 +8,7 @@ from services.predict import MachineLearningModelHandlerScore as model
 
 router = APIRouter()
 
+# TODO: Change 'load_wrapper' and 'method'  based on your {{cookiecutter.machine_learn_model_name}} model.
 get_prediction = lambda data_input: MachineLearningResponse(
     model.predict(data_input, load_wrapper=joblib.load, method="predict_proba")
 )
@@ -15,7 +16,15 @@ get_prediction = lambda data_input: MachineLearningResponse(
 
 @router.get("/predict", response_model=MachineLearningResponse, name="predict:get-data")
 async def predict(data_input: Any = None):
-    return get_prediction(data_input)
+    try:
+        if not data_input:
+            raise HTTPException(
+                status_code=404, detail=f"'data_input' argument invalid!"
+            )
+        prediction = get_prediction(data_input)
+        return MachineLearningResponse(prediction=prediction)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"{Exception: e}")
 
 
 @router.get(

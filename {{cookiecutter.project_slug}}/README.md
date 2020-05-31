@@ -15,7 +15,7 @@ MODEL_PATH={{cookiecutter.machine_learn_model_path}}
 MODEL_NAME={{cookiecutter.machine_learn_model_name}}
 ```
 
-### Update /predict
+### Update `/predict`
 
 To update your machine learning model, add your `load` and `method` [change here](app/api/routes/predictor.py#L13) at `predictor.py`
 

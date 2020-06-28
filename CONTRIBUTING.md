@@ -49,4 +49,4 @@ Application parts are:
     ├── services         - logic that is not just crud related.
     └── main.py          - FastAPI application creation and configuration.
     ├──
-    tests                - pytest
+    tests                - pytest. 

@@ -5,7 +5,7 @@
     "machine_learn_model_path": "./ml/model/",
     "machine_learn_model_name": "model.pkl",
     "full_name": "Your name",
-    "email": "Your address email (eq. you@example.com)",
+    "email": "Your address email (you@example.com)",
     "release_date": "{% now 'local' %}",
     "version": "0.1.0",
     "_extensions": [

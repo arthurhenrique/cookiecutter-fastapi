@@ -63,5 +63,5 @@ Application parts are:
     ├── models           - pydantic models for this application.
     ├── services         - logic that is not just crud related.
     └── main.py          - FastAPI application creation and configuration.
-    ├──
-    tests                - pytest
+    │
+    tests                  - pytest

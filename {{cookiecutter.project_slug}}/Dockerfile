@@ -13,4 +13,4 @@ RUN pip install --upgrade pip && \
 
 COPY . ./
 ENV PYTHONPATH app
-CMD python app/main.py
+ENTRYPOINT ["python", "app/main.py"]

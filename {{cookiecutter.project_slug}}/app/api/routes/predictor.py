@@ -9,7 +9,6 @@ from services.predict import MachineLearningModelHandlerScore as model
 
 router = APIRouter()
 
-# TODO: Change 'load_wrapper' and 'method'  based on your {{cookiecutter.machine_learn_model_name}}.
 get_prediction = lambda data_input: MachineLearningResponse(
     model.predict(data_input, load_wrapper=joblib.load, method="predict_proba")
 )

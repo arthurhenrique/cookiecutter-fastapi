@@ -10,5 +10,8 @@
     "version": "0.1.0",
     "_extensions": [
         "jinja2_time.TimeExtension"
+    ],
+    "_copy_without_render": [
+        "*ci.yaml"
     ]
 }

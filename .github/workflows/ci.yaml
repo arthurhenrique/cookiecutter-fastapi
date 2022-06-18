@@ -1,0 +1,28 @@
+name: ci
+on: push
+
+jobs:
+  integration-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-poetry-${{ hashFiles('poetry.lock') }}
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install Python Dependencies
+        run: |
+          pip install poetry cookiecutter
+      - name: Check
+        run: |
+          ls -l
+          cookiecutter --no-input .
+          cd name-of-the-project
+          make install
+          make test

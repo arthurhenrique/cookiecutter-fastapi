@@ -16,7 +16,7 @@ joblib = "^1.2.0"
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
 black = {version = "^19.10b0", allow-prereleases = true}
-autopep8 = "^1.4.4"
+autopep8 = "^2.0.0"
 ipdb = "^0.13.0"
 
 [build-system]

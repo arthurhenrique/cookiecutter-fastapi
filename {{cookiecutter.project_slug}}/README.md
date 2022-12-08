@@ -4,7 +4,7 @@
 
 ## Development Requirements
 
-- Python3.8.2
+- > Python3.11.0
 - Pip
 - Poetry (Python Package Manager)
 

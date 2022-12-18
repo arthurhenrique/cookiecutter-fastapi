@@ -1,11 +1,11 @@
-import logging
 import sys
-from typing import List
+import logging
 
-from core.logging import InterceptHandler
 from loguru import logger
 from starlette.config import Config
-from starlette.datastructures import CommaSeparatedStrings, Secret
+from starlette.datastructures import Secret
+
+from core.logging import InterceptHandler
 
 config = Config(".env")
 
@@ -27,3 +27,4 @@ logger.configure(handlers=[{"sink": sys.stderr, "level": LOGGING_LEVEL}])
 
 MODEL_PATH = config("MODEL_PATH", default="{{cookiecutter.machine_learn_model_path}}")
 MODEL_NAME = config("MODEL_NAME", default="{{cookiecutter.machine_learn_model_name}}")
+INPUT_EXAMPLE = config("INPUT_EXAMPLE", default="{{cookiecutter.input_example_path}}")

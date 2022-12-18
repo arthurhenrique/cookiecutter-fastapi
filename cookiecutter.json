@@ -4,6 +4,7 @@
     "project_short_description": "A short description of the project",
     "machine_learn_model_path": "./ml/model/",
     "machine_learn_model_name": "model.pkl",
+    "input_example_path": "./ml/model/examples/example.json",
     "full_name": "Your name",
     "email": "Your address email (you@example.com)",
     "release_date": "{% now 'local' %}",

@@ -2,15 +2,20 @@ FROM python:3.11.1
 
 ENV PYTHONUNBUFFERED 1
 
-EXPOSE 8080
 WORKDIR /app
 
 COPY poetry.lock pyproject.toml ./
 RUN pip install --upgrade pip && \
     pip install poetry && \
-    poetry config virtualenvs.create false && \
-    poetry install --no-dev
+    poetry config virtualenvs.create false 
 
-COPY . ./
-ENV PYTHONPATH app
-ENTRYPOINT ["python", "app/main.py"]
+ARG DEV=false
+RUN if [ "$DEV" = "true" ] ; then poetry install --with dev ; else poetry install --only main ; fi
+
+COPY ./app/ ./
+COPY ./ml/model/ ./ml/model/
+
+ENV PYTHONPATH "${PYTHONPATH}:/app"
+
+EXPOSE 8080
+CMD uvicorn main:app --host 0.0.0.0 --port 8080

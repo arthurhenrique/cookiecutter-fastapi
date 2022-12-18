@@ -1,8 +1,9 @@
 import os
 
+from loguru import logger
+
 from core.errors import PredictException, ModelLoadException
 from core.config import MODEL_NAME, MODEL_PATH
-from loguru import logger
 
 
 class MachineLearningModelHandlerScore(object):

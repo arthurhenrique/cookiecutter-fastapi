@@ -27,10 +27,10 @@ test:
 install: generate_dot_env
 	pip install --upgrade pip
 	pip install poetry
-	poetry install
+	poetry install --with dev
 
 run:
-	PYTHONPATH=app/ poetry run python app/main.py
+	PYTHONPATH=app/ poetry run uvicorn main:app --reload --host 0.0.0.0 --port 8080
 
 deploy: generate_dot_env
 	docker-compose build

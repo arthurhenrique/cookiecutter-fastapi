@@ -350,18 +350,18 @@ tests = ["asttokens", "littleutils", "pytest", "rich"]
 
 [[package]]
 name = "fastapi"
-version = "0.96.0"
+version = "0.96.1"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "fastapi-0.96.0-py3-none-any.whl", hash = "sha256:b8e11fe81e81eab4e1504209917338e0b80f783878a42c2b99467e5e1019a1e9"},
-    {file = "fastapi-0.96.0.tar.gz", hash = "sha256:71232d47c2787446991c81c41c249f8a16238d52d779c0e6b43927d3773dbe3c"},
+    {file = "fastapi-0.96.1-py3-none-any.whl", hash = "sha256:22d773ce95f14f04f8f37a0c8998fc163e67af83b65510d2879de6cbaaa10215"},
+    {file = "fastapi-0.96.1.tar.gz", hash = "sha256:5c1d243030e63089ccfc0aec69c2da6d619943917727e8e82ee502358d5119bf"},
 ]
 
 [package.dependencies]
-pydantic = ">=1.6.2,<1.7 || >1.7,<1.7.1 || >1.7.1,<1.7.2 || >1.7.2,<1.7.3 || >1.7.3,<1.8 || >1.8,<1.8.1 || >1.8.1,<2.0.0"
+pydantic = ">=1.7.4,<1.8 || >1.8,<1.8.1 || >1.8.1,<2.0.0"
 starlette = ">=0.27.0,<0.28.0"
 
 [package.extras]

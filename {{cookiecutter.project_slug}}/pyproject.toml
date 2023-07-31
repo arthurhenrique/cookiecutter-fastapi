@@ -7,7 +7,7 @@ authors = ["{{cookiecutter.full_name}} ({{cookiecutter.email}})"]
 [tool.poetry.dependencies]
 python = "^3.9"
 fastapi = "^0.99.0"
-uvicorn = "0.22.0"
+uvicorn = "0.23.2"
 pydantic = "^1.3"
 requests = "^2.22.0"
 loguru = "^0.7.0"

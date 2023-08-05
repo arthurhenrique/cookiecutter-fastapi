@@ -9,9 +9,6 @@
     "email": "Your address email (you@example.com)",
     "release_date": "{% now 'local' %}",
     "version": "0.1.0",
-    "_extensions": [
-        "jinja2_time.TimeExtension"
-    ],
     "_copy_without_render": [
         "*ci.yaml"
     ]

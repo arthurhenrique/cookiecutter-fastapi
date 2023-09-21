@@ -6,7 +6,7 @@
   "machine_learn_model_name": "model.pkl",
   "input_example_path": "./ml/model/examples/example.json",
   "full_name": "Your name",
-  "email": "Your email (you@example.com)",
+  "email": "you@example.com",
   "release_date": "{% now 'local' %}",
   "version": "0.1.0",
   "_copy_without_render": ["*ci.yaml"]

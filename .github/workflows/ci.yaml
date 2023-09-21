@@ -24,9 +24,9 @@ jobs:
           pip install poetry cookiecutter poethepoet
       - name: Check
         run: |
-          ls -l
           cookiecutter --no-input .
-          cd FastAPI-Project
+          ls -l
+          cd fastapi-project
           poe install-dev
           poe test
-          poe docker-build
+          poe build

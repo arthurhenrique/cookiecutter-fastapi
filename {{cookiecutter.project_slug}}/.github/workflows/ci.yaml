@@ -4,11 +4,10 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.6", "3.7", "3.8", "3.9"]
+        python-version: ["3.9", "3.11"]
 
     steps:
       - uses: actions/checkout@v3
@@ -18,7 +17,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          make install
-      - name: Test with pytest
+          poe install-dev
+      - name: Run tests
         run: |
-          make test
+          poe test

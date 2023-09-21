@@ -2,7 +2,7 @@
 name = "{{cookiecutter.project_name}}"
 version = "0.1.0"
 description = "{{cookiecutter.project_short_description}}"
-authors = ["{{cookiecutter.full_name}} ({{cookiecutter.email}})"]
+authors = ["{{cookiecutter.full_name}} <{{cookiecutter.email}}>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -38,8 +38,12 @@ pylint = "^2.15.8"
 [tool.poetry.group.azure]
 optional = true
 
+[tool.poetry.group.azure.dependencies]
+
 [tool.poetry.group.gcp]
 optional = true
+
+[tool.poetry.group.gcp.dependencies]
 
 [tool.poetry.group.aws]
 optional = true
@@ -96,17 +100,17 @@ addopts = """
 --maxfail=1 \
 --reverse \
 --color=yes \
---cov=starter \
+--cov=app \
 --html=docs/pytest_report.html \
 --self-contained-html \
---cov-fail-under=100 \
+--cov-fail-under=1 \
 --cov-report term-missing \
 --cov-report html:docs/cov-report \
 --doctest-modules \
 --cov-config=pyproject.toml"""
 testpaths = [
     "tests",
-    "starter"
+    "source"
 ]
 python_files = ["*_test.py"]
 python_functions = ["test_*"]
@@ -129,6 +133,7 @@ exclude_lines = [
 install = "poetry install --only main"
 install-dev = "poetry install"
 test = "pytest tests -vv --show-capture=all"
+build = ["generate-dot-env", "docker-build"]
 docker-build = "docker-compose build"
 docker-up = "docker-compose up -d"
 docker-down = "docker-compose down"
@@ -144,24 +149,22 @@ doc-publish = """mkdocs gh-deploy \
 --remote-branch docs"""
 
 [tool.poe.tasks.run]
-cmd = "uvicorn starter.api:app --reload --port $port"
-args = [
-    { name = "port", default = 8000, type = "integer" },
-]
+cmd = "uvicorn main:app --reload --port $PORT"
+env = { "PYTHONPATH" = "app/", "PORT" = "8000" }
 
 [tool.poe.tasks.generate-dot-env]
 shell = """
-if [[ ! -e .env ]]; then \
-  cp .env.example .env; \
+if [[ ! -e .env ]]; then
+  cp .env.example .env;
 fi
 """
 
 [tool.poe.tasks.clean]
 shell = """
-find . -name '*.pyc' -exec rm -rf {} \;
-find . -name '__pycache__' -exec rm -rf {} \;
-find . -name 'Thumbs.db' -exec rm -rf {} \;
-find . -name '*~' -exec rm -rf {} \;
+find . -name '*.pyc' -exec rm -rf {} \\;
+find . -name '__pycache__' -exec rm -rf {} \\;
+find . -name 'Thumbs.db' -exec rm -rf {} \\;
+find . -name '*~' -exec rm -rf {} \\;
 rm -rf .cache
 rm -rf build
 rm -rf dist

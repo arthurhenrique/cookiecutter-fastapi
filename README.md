@@ -1,6 +1,6 @@
 # cookiecutter-fastapi
 
-Create a FastAPI-based project with a ML model backend. :rocket:
+Create a FastAPI-based project with a ML model backend, with Poetry/Poe toolchain. :rocket:
 
 Forked from [gh:arthurhenrique/cookiecutter-fastapi](https://github.com/arthurhenrique/cookiecutter-fastapi)
 

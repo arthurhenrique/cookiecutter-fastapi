@@ -110,7 +110,7 @@ addopts = """
 --cov-config=pyproject.toml"""
 testpaths = [
     "tests",
-    "source"
+    "app"
 ]
 python_files = ["*_test.py"]
 python_functions = ["test_*"]

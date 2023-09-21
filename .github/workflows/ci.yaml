@@ -18,11 +18,11 @@ jobs:
           python-version: 3.9
       - name: Install Python Dependencies
         run: |
-          pip install poetry cookiecutter
+          pip install poetry cookiecutter poethepoet
       - name: Check
         run: |
           ls -l
           cookiecutter --no-input .
-          cd name-of-the-project
-          make install
-          make test
+          cd cookiecutter-fastapi
+          poe install
+          poe test

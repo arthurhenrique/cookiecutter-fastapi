@@ -15,11 +15,31 @@ joblib = "^1.2.0"
 scikit-learn = "^1.2.0"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.2"
-black = {version = "^19.10b0", allow-prereleases = true}
+pre-commit = "^2.18.1"
+black = {version = "^22.3.0", allow-prereleases = true}
+xdoctest = "^1.0.0"
+poethepoet = "^0.16.4"
+ruff = "^0.0.253"
+pytest = "7.1.1"
+pytest-html = "^3.1.1"
+pytest-sugar = "^0.9.6"
+pytest-reverse = "^1.5.0"
+pytest-cov = "^3.0.0"
+pytest-bdd = "^6.1.1"
+mkdocs = "^1.4.2"
+mkdocs-material = "^8.5.10"
+mkdocs-gen-files = "^0.4.0"
+mkdocs-awesome-pages-plugin = "^2.8.0"
+mkapi = "^1.0.14"
 autopep8 = "^2.0.0"
 ipdb = "^0.13.0"
 pylint = "^2.15.8"
+
+[tool.poetry.group.azure]
+optional = true
+
+[tool.poetry.group.gcp]
+optional = true
 
 [tool.poetry.group.aws]
 optional = true
@@ -27,21 +47,126 @@ optional = true
 [tool.poetry.group.aws.dependencies]
 mangum = "^0.17.0"
 
+[tool.poetry.scripts]
+-c = "poethepoet:main"
+
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-line-length = 88
-target-version = ['py39', 'py310', 'py311']
+line-length = 79
+target-version = ['py310']
 include = '\.pyi?$'
-exclude = '''
-/(
-  \.toml
-  |\.sh
-  |\.git
-  |\.ini
-  |Dockerfile
-  |Jenkinfile
-)/
-'''
+
+[tool.ruff]
+ignore = ["E501"]
+line-length = 79
+select = [
+    "C9",
+    "E",
+    "F",
+    "W",
+    "D",
+    "G",
+    "A",
+    "PT",
+    "S",
+    "B",
+    "ANN",
+    "SIM",
+    "I",
+    "N",
+]
+
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.ruff.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = """
+--verbose \
+--maxfail=1 \
+--reverse \
+--color=yes \
+--cov=starter \
+--html=docs/pytest_report.html \
+--self-contained-html \
+--cov-fail-under=100 \
+--cov-report term-missing \
+--cov-report html:docs/cov-report \
+--doctest-modules \
+--cov-config=pyproject.toml"""
+testpaths = [
+    "tests",
+    "starter"
+]
+python_files = ["*_test.py"]
+python_functions = ["test_*"]
+render_collapsed = true
+bdd_features_base_dir = "features"
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:"
+    ]
+
+[tool.poe.tasks]
+install = "poetry install --only main"
+install-dev = "poetry install"
+test = "pytest tests -vv --show-capture=all"
+docker-build = "docker-compose build"
+docker-up = "docker-compose up -d"
+docker-down = "docker-compose down"
+pre-commit = "pre-commit run --all-files"
+lint-ruff = "ruff check **/*.py --fix"
+lint-black = "black **/*.py"
+lint = ["lint-black", "lint-ruff"]
+doc = "mkdocs serve --use-directory-urls -f docs/mkdocs.yaml"
+doc-html = "mkdocs build --no-directory-urls -f docs/mkdocs.yaml"
+doc-publish = """mkdocs gh-deploy \
+--config-file docs/mkdocs.yaml \
+--no-directory-urls \
+--remote-branch docs"""
+
+[tool.poe.tasks.run]
+cmd = "uvicorn starter.api:app --reload --port $port"
+args = [
+    { name = "port", default = 8000, type = "integer" },
+]
+
+[tool.poe.tasks.generate-dot-env]
+shell = """
+if [[ ! -e .env ]]; then \
+  cp .env.example .env; \
+fi
+"""
+
+[tool.poe.tasks.clean]
+shell = """
+find . -name '*.pyc' -exec rm -rf {} \;
+find . -name '__pycache__' -exec rm -rf {} \;
+find . -name 'Thumbs.db' -exec rm -rf {} \;
+find . -name '*~' -exec rm -rf {} \;
+rm -rf .cache
+rm -rf build
+rm -rf dist
+rm -rf *.egg-info
+rm -rf htmlcov
+rm -rf .tox/
+rm -rf docs/_build
+"""

@@ -1,26 +1,21 @@
 # cookiecutter-fastapi
 
-In order to create a template to FastAPI projects. :rocket:
+Create a FastAPI-based project with a ML model backend. :rocket:
 
-## Important
-To use this project you don't need fork it. Just run cookiecutter CLI and voilà!
+Forked from [gh:arthurhenrique/cookiecutter-fastapi](https://github.com/arthurhenrique/cookiecutter-fastapi)
 
-## Cookiecutter
-
-Cookiecutter is a CLI tool (Command Line Interface) to create an application boilerplate from a template. It uses a templating system — Jinja2 — to replace or customize folder and file names, as well as file content.
-
-### How can I install?
+## Pre-requisites
 
 ```bash
-pip install cookiecutter
+pip install cookiecutter poetry poethepoet
 ```
 
-### How can I generate a FastAPI project?
+## Run with cookiecutter
 
 ```bash
-cookiecutter gh:arthurhenrique/cookiecutter-fastapi
+cookiecutter gh:cwang/cookiecutter-fastapi
 ```
 
-### Hands On
+## Demo
 
-![Example](./docs/example/cookiecutter-fastapi-cli.svg)
+![Example](./docs/example/cookiecutter-fastapi-cli.svg) (courtesy of gh:arthurhenrique/cookiecutter-fastapi again)

@@ -1,5 +1,8 @@
 name: ci
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   integration-test:
@@ -24,5 +27,6 @@ jobs:
           ls -l
           cookiecutter --no-input .
           cd cookiecutter-fastapi
-          poe install
+          poe install-dev
           poe test
+          poe docker-build

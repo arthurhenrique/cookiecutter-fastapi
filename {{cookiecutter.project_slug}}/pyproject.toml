@@ -103,7 +103,7 @@ addopts = """
 --cov=app \
 --html=docs/pytest_report.html \
 --self-contained-html \
---cov-fail-under=1 \
+--cov-fail-under=10 \
 --cov-report term-missing \
 --cov-report html:docs/cov-report \
 --doctest-modules \
@@ -154,10 +154,12 @@ env = { "PYTHONPATH" = "app/", "PORT" = "8000" }
 
 [tool.poe.tasks.generate-dot-env]
 shell = """
-if [[ ! -e .env ]]; then
-  cp .env.example .env;
+if [[ ! -e .env ]]
+then
+  cp .env.example .env
 fi
 """
+interpreter = "bash"
 
 [tool.poe.tasks.clean]
 shell = """

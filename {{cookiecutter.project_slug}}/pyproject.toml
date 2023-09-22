@@ -59,13 +59,13 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-line-length = 79
-target-version = ['py310']
+line-length = 120
+target-version = ['py39']
 include = '\.pyi?$'
 
 [tool.ruff]
 ignore = ["E501"]
-line-length = 79
+line-length = 120
 select = [
     "C9",
     "E",

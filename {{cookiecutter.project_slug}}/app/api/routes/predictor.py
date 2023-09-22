@@ -26,7 +26,6 @@ def get_prediction(data_point):
     name="predict:get-data",
 )
 async def predict(data_input: MachineLearningDataInput):
-
     if not data_input:
         raise HTTPException(status_code=404, detail="'data_input' argument invalid!")
     try:

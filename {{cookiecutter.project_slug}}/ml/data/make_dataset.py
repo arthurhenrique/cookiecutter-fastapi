@@ -21,8 +21,6 @@ def main(input_filepath, output_filepath):
 
 
 if __name__ == "__main__":
-
     load_dotenv(find_dotenv())
 
-    # pylint: disable = no-value-for-paramete
     main()

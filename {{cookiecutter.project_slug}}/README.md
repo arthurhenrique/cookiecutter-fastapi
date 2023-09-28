@@ -21,23 +21,11 @@ To update your machine learning model, add your `load` and `method` [change here
 
 ## Installation
 
-```sh
-python -m venv venv
-source venv/bin/activate
-make install
-```
+`poe install-dev`
 
 ## Runnning Localhost
 
-`make run`
-
-## Deploy app
-
-`make deploy`
-
-## Running Tests
-
-`make test`
+`poe run`
 
 ## Access Swagger Documentation
 
@@ -46,6 +34,10 @@ make install
 ## Access Redocs Documentation
 
 > <http://localhost:8080/redoc>
+
+## Running Tests
+
+`poe test`
 
 ## Project structure
 
@@ -88,6 +80,7 @@ Application parts are:
     └── tests            - pytest
 
 ## GCP
+
 Deploying inference service to Cloud Run
 
 ### Authenticate
@@ -112,6 +105,7 @@ Deploying inference service to Cloud Run
 2. Delete Docker image in GCR
 
 ## AWS
+
 Deploying inference service to AWS Lambda
 
 ### Authenticate
@@ -123,9 +117,9 @@ Deploying inference service to AWS Lambda
 
 1. Run `sam build`
 2. Run `sam deploy --guiChange this portion for other types of models
+
 ## Add the correct type hinting when completed
 
 `aws cloudformation delete-stack --stack-name <STACK_NAME_ON_CREATION>`
-
 
 Made by https://github.com/arthurhenrique/cookiecutter-fastapi/graphs/contributors with ❤️

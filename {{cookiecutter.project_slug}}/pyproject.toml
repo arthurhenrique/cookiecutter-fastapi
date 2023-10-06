@@ -19,7 +19,7 @@ pytest = "^7.2"
 black = {version = "^19.10b0", allow-prereleases = true}
 autopep8 = "^2.0.0"
 ipdb = "^0.13.0"
-pylint = "^2.15.8"
+pylint = "^3.0.0"
 
 [tool.poetry.group.aws]
 optional = true

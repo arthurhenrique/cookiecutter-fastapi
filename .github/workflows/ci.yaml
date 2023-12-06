@@ -13,7 +13,7 @@ jobs:
           path: ~/.cache/pypoetry/virtualenvs
           key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-poetry-${{ hashFiles('poetry.lock') }}
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: 3.9
       - name: Install Python Dependencies

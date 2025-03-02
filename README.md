@@ -3,6 +3,7 @@
 In order to create a template to FastAPI projects. :rocket:
 
 ## Important
+
 To use this project you don't need fork it. Just run cookiecutter CLI and voilà!
 
 ## Cookiecutter

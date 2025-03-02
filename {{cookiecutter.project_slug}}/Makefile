@@ -22,15 +22,16 @@ endif
 all: clean test install run deploy down
 
 test:
-	poetry run pytest tests -vv --show-capture=all
+	uv pip install -e ".[dev]"
+	uv run pytest tests -vv --show-capture=all
 
 install: generate_dot_env
 	pip install --upgrade pip
-	pip install poetry
-	poetry install --with dev
+	pip install uv
+	uv pip install -e ".[dev]"
 
 run:
-	PYTHONPATH=app/ poetry run uvicorn main:app --reload --host 0.0.0.0 --port 8080
+	PYTHONPATH=app/ uvicorn main:app --reload --host 0.0.0.0 --port 8080
 
 deploy: generate_dot_env
 	docker-compose build

@@ -43,4 +43,4 @@ jobs:
       - name: Run Tests
         run: |
           cd name-of-the-project
-          make test
+          uv run pytest tests -vv --show-capture=all

@@ -7,22 +7,40 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pypoetry/virtualenvs
-          key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-poetry-${{ hashFiles('poetry.lock') }}
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.9
-      - name: Install Python Dependencies
-        run: |
-          pip install poetry cookiecutter
-      - name: Check
+
+      - name: Install UV
+        run: pip install uv cookiecutter
+
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/uv
+          key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-uv-${{ hashFiles('pyproject.toml') }}
+
+      - name: Generate Project with Cookiecutter
         run: |
           ls -l
           cookiecutter --no-input .
           cd name-of-the-project
-          make install
+
+      - name: Create Virtual Environment for UV
+        run: |
+          cd name-of-the-project
+          uv venv .venv  # Criando ambiente virtual
+          echo "VIRTUAL_ENV=$(pwd)/.venv" >> $GITHUB_ENV
+          echo "$(pwd)/.venv/bin" >> $GITHUB_PATH
+
+      - name: Install Dependencies
+        run: |
+          cd name-of-the-project
+          uv pip install -e ".[dev]"
+
+      - name: Run Tests
+        run: |
+          cd name-of-the-project
           make test

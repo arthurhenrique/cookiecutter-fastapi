@@ -4,9 +4,8 @@
 
 ## Development Requirements
 
-- Python3.11.0
-- Pip
-- Poetry (Python Package Manager)
+- Python 3.11+
+- Uv (Python Package Manager)
 
 ### M.L Model Environment
 

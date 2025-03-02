@@ -4,9 +4,8 @@ This document is in order you need PR some feature/fix/idea to cookiecutter-fast
 
 ## Development Requirements
 
-- Python3.8.2
-- Pip
-- Poetry (Python Package Manager)
+- Python 3.11+
+- uv (Python Package Manager)
 
 ## Installation
 
@@ -49,4 +48,4 @@ Application parts are:
     ├── services         - logic that is not just crud related.
     └── main.py          - FastAPI application creation and configuration.
     ├──
-    tests                - pytest. 
+    tests                - pytest.

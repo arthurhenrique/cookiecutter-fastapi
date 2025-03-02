@@ -21,17 +21,18 @@ endif
 
 all: clean test install run deploy down
 
-test:
-	uv pip install -e ".[dev]"
+venv:
+	uv venv .venv
+
+test: venv
 	uv run pytest tests -vv --show-capture=all
 
-install: generate_dot_env
-	pip install --upgrade pip
-	pip install uv
+install: generate_dot_env venv
+	pip install uv --break-system-packages
 	uv pip install -e ".[dev]"
 
-run:
-	PYTHONPATH=app/ uvicorn main:app --reload --host 0.0.0.0 --port 8080
+run: venv
+	PYTHONPATH=app/ uv run uvicorn main:app --reload --host 0.0.0.0 --port 8080
 
 deploy: generate_dot_env
 	docker-compose build

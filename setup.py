@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-""" setup.py for cookiecutter-fastapi."""
+"""setup.py for cookiecutter-fastapi."""
 
 from setuptools import setup
 

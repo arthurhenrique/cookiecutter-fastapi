@@ -1,5 +1,6 @@
 from typing import Callable
 
+import joblib
 from fastapi import FastAPI
 
 
@@ -9,7 +10,7 @@ def preload_model():
     """
     from services.predict import MachineLearningModelHandlerScore
 
-    MachineLearningModelHandlerScore.get_model()
+    MachineLearningModelHandlerScore.get_model(joblib.load)
 
 
 def create_start_app_handler(app: FastAPI) -> Callable:

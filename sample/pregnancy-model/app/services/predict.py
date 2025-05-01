@@ -11,8 +11,9 @@ class MachineLearningModelHandlerScore(object):
     @classmethod
     def predict(cls, input, load_wrapper=None, method="predict"):
         clf = cls.get_model(load_wrapper)
-        if hasattr(clf, method):
-            return getattr(clf, method)(input)
+        if hasattr(clf['model'], method):
+            input_data_scaled = clf['scaler'].transform(input)
+            return getattr(clf['model'], method)(input_data_scaled)
         raise PredictException(f"'{method}' attribute is missing")
 
     @classmethod

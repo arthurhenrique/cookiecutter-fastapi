@@ -8,11 +8,11 @@ TIMEOUT := 60
 endif
 
 ifeq ($(MODEL_PATH),)
-MODEL_PATH := /Users/arthur.dasilva/Downloads
+MODEL_PATH := /Users/arthur.dasilva/repos/arthurhenrique/cookiecutter-fastapi/sample/pregnancy-model
 endif
 
 ifeq ($(MODEL_NAME),)
-MODEL_NAME := pregnancy_model.pkl
+MODEL_NAME := pregnancy_model_local.joblib
 endif
 
 # Target section and Global definitions
@@ -33,6 +33,9 @@ install: generate_dot_env venv
 
 run: venv
 	PYTHONPATH=app/ uv run uvicorn main:app --reload --host 0.0.0.0 --port 8080
+
+train:
+	uv run python ml/model/pregnancy_model.py
 
 deploy: generate_dot_env
 	docker-compose build

@@ -12,19 +12,26 @@ class HealthResponse(BaseModel):
 
 
 class MachineLearningDataInput(BaseModel):
+    idade_mae: float
     horas_sono: float
     alimentacao_saudavel: float
     nivel_estresse: float
-    exercicio: float
+    atividade_fisica_semana: float
+    renda_familiar: float
+    apoio_social: float
+
 
     def get_np_array(self):
         return np.array(
             [
                 [
+                    self.idade_mae,
                     self.horas_sono,
                     self.alimentacao_saudavel,
                     self.nivel_estresse,
-                    self.exercicio,
+                    self.atividade_fisica_semana,
+                    self.renda_familiar,
+                    self.apoio_social,
                 ]
             ]
         )

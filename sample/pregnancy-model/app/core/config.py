@@ -17,7 +17,7 @@ MIN_CONNECTIONS_COUNT: int = config("MIN_CONNECTIONS_COUNT", cast=int, default=1
 SECRET_KEY: Secret = config("SECRET_KEY", cast=Secret, default="")
 MEMOIZATION_FLAG: bool = config("MEMOIZATION_FLAG", cast=bool, default=True)
 
-PROJECT_NAME: str = config("PROJECT_NAME", default="manu")
+PROJECT_NAME: str = config("PROJECT_NAME", default="pregnancy-model")
 
 # logging configuration
 LOGGING_LEVEL = logging.DEBUG if DEBUG else logging.INFO
@@ -26,6 +26,6 @@ logging.basicConfig(
 )
 logger.configure(handlers=[{"sink": sys.stderr, "level": LOGGING_LEVEL}])
 
-MODEL_PATH = config("MODEL_PATH", default="/Users/arthur.dasilva/repos/arthurhenrique/n")
+MODEL_PATH = config("MODEL_PATH", default="/Users/arthur.dasilva/repos/arthurhenrique/cookiecutter-fastapi/sample/pregnancy-model")
 MODEL_NAME = config("MODEL_NAME", default="pregnancy_model_local.joblib")
 INPUT_EXAMPLE = config("INPUT_EXAMPLE", default="./ml/model/examples/example.json")

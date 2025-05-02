@@ -9,7 +9,7 @@ from starlette.datastructures import Secret
 config = Config(".env")
 
 API_PREFIX = "/api"
-VERSION = "0.1.0"
+VERSION = "{{cookiecutter.version}}"
 DEBUG: bool = config("DEBUG", cast=bool, default=False)
 MAX_CONNECTIONS_COUNT: int = config("MAX_CONNECTIONS_COUNT", cast=int, default=10)
 MIN_CONNECTIONS_COUNT: int = config("MIN_CONNECTIONS_COUNT", cast=int, default=10)

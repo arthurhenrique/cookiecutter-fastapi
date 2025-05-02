@@ -25,8 +25,6 @@ logging.basicConfig(
 )
 logger.configure(handlers=[{"sink": sys.stderr, "level": LOGGING_LEVEL}])
 
-MODEL_PATH = config(
-    "MODEL_PATH", default="/Users/arthur.dasilva/repos/arthurhenrique/n"
-)
-MODEL_NAME = config("MODEL_NAME", default="pregnancy_model_local.joblib")
-INPUT_EXAMPLE = config("INPUT_EXAMPLE", default="./ml/model/examples/example.json")
+MODEL_PATH = config("MODEL_PATH", default="{{cookiecutter.machine_learn_model_path}}")
+MODEL_NAME = config("MODEL_NAME", default="{{cookiecutter.machine_learn_model_name}}")
+INPUT_EXAMPLE = config("INPUT_EXAMPLE", default="{{cookiecutter.input_example_path}}")

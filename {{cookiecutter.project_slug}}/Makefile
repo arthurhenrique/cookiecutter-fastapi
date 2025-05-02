@@ -24,7 +24,7 @@ all: clean test install run deploy down
 venv:
 	uv venv .venv
 
-test: venv
+test: install
 	uv run pytest tests -vv --show-capture=all
 
 install: generate_dot_env venv

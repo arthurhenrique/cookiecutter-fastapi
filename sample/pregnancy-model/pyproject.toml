@@ -1,0 +1,52 @@
+[project]
+requires-python = ">=3.9"
+name = "n"
+version = "0.1.0"
+description = "n"
+authors = [
+    { name = "arthur henrique", email = "arthur393@gmail.com" },
+]
+dependencies = [
+    "fastapi>=0.103.0",
+    "uvicorn==0.23.2",
+    "pydantic>=2.0.0",
+    "requests>=2.32.0",
+    "loguru>=0.7.0",
+    "joblib>=1.2.0",
+    "scikit-learn>=1.1.3",
+    "pandas>=2.2.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.2",
+    "black>=24.3",
+    "autopep8>=2.0.0",
+    "ipdb>=0.13.0",
+    "pylint>=3.0.0"
+]
+aws = [
+    "mangum>=0.17.0"
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py39', 'py310', 'py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+  \.toml
+  |\.sh
+  |\.git
+  |\.ini
+  |Dockerfile
+  |Jenkinfile
+)/
+'''
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]

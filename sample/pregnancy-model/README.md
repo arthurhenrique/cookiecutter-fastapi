@@ -14,6 +14,28 @@ MODEL_PATH=./ml/model/
 MODEL_NAME=model.pkl
 ```
 
+### Database Configuration
+
+Set your database url in `.env` using `DATABASE_URL`. The default uses SQLite:
+
+```sh
+DATABASE_URL=sqlite:///./app.db
+```
+
+### Migrations
+
+Create a new migration with:
+
+```sh
+alembic revision --autogenerate -m "message"
+```
+
+Apply migrations with:
+
+```sh
+alembic upgrade head
+```
+
 ### Update `/predict`
 
 To update your machine learning model, add your `load` and `method` [change here](app/api/routes/predictor.py#L19) at `predictor.py`

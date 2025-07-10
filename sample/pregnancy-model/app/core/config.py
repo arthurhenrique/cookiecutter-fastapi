@@ -5,7 +5,7 @@ from loguru import logger
 from starlette.config import Config
 from starlette.datastructures import Secret
 
-from core.logging import InterceptHandler
+from .logging import InterceptHandler
 
 config = Config(".env")
 
@@ -29,3 +29,4 @@ logger.configure(handlers=[{"sink": sys.stderr, "level": LOGGING_LEVEL}])
 MODEL_PATH = config("MODEL_PATH", default="/Users/arthur.dasilva/repos/arthurhenrique/cookiecutter-fastapi/sample/pregnancy-model")
 MODEL_NAME = config("MODEL_NAME", default="pregnancy_model_local.joblib")
 INPUT_EXAMPLE = config("INPUT_EXAMPLE", default="./ml/model/examples/example.json")
+DATABASE_URL = config("DATABASE_URL", default="sqlite:///./app.db")

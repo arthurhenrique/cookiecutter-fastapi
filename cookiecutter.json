@@ -5,6 +5,7 @@
     "machine_learn_model_path": "./ml/model/",
     "machine_learn_model_name": "model.pkl",
     "input_example_path": "./ml/model/examples/example.json",
+    "database_url": "sqlite:///./app.db",
     "full_name": "Your name",
     "email": "you@example.com",
     "release_date": "{% now 'local' %}",

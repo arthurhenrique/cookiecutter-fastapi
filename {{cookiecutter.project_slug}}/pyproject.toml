@@ -13,7 +13,9 @@ dependencies = [
     "requests>=2.32.0",
     "loguru>=0.7.0",
     "joblib>=1.2.0",
-    "scikit-learn>=1.5.0"
+    "scikit-learn>=1.5.0",
+    "SQLAlchemy>=2.0.0",
+    "alembic>=1.12.0"
 ]
 
 [project.optional-dependencies]

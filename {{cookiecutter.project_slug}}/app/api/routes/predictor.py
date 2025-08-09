@@ -1,8 +1,10 @@
 import json
+from pathlib import Path
 
 import joblib
 from core.config import INPUT_EXAMPLE
 from fastapi import APIRouter, HTTPException
+from fastapi.concurrency import run_in_threadpool
 from models.prediction import (
     HealthResponse,
     MachineLearningDataInput,
@@ -33,11 +35,14 @@ async def predict(data_input: MachineLearningDataInput):
         raise HTTPException(status_code=404, detail="'data_input' argument invalid!")
     try:
         data_point = data_input.get_np_array()
-        prediction = get_prediction(data_point)
+        prediction = await run_in_threadpool(get_prediction, data_point)
+        try:
+            prediction = float(prediction[0])
+        except (TypeError, IndexError, KeyError):
+            prediction = float(prediction)
         prediction_label = get_prediction_label(prediction)
-
     except Exception as err:
-        raise HTTPException(status_code=500, detail=f"Exception: {err}")
+        raise HTTPException(status_code=500, detail=f"Exception: {err}") from err
 
     return MachineLearningResponse(
         prediction=prediction, prediction_label=prediction_label
@@ -50,14 +55,11 @@ async def predict(data_input: MachineLearningDataInput):
     name="health:get-data",
 )
 async def health():
-    is_health = False
     try:
-        test_input = MachineLearningDataInput(
-            **json.loads(open(INPUT_EXAMPLE, "r").read())
-        )
+        content = await run_in_threadpool(Path(INPUT_EXAMPLE).read_text)
+        test_input = MachineLearningDataInput(**json.loads(content))
         test_point = test_input.get_np_array()
-        get_prediction(test_point)
-        is_health = True
-        return HealthResponse(status=is_health)
+        await run_in_threadpool(get_prediction, test_point)
+        return HealthResponse(status=True)
     except Exception:
         raise HTTPException(status_code=404, detail="Unhealthy")

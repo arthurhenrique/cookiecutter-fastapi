@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 class MachineLearningResponse(BaseModel):
     prediction: float
+    prediction_label: str
 
 
 class HealthResponse(BaseModel):

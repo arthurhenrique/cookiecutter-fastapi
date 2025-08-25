@@ -1,2 +1,2 @@
 - Always run `pytest {{cookiecutter.project_slug}}/tests` and ensure all tests pass after any code changes.
-- Run tests even if not explicitly requested.
+- Always add tests, keep your branch rebased instead of merged, and adhere to the commit message recommendations from cbea.ms/git-commit.

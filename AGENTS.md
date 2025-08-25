@@ -1,0 +1,2 @@
+- Always run `pytest {{cookiecutter.project_slug}}/tests` and ensure all tests pass after any code changes.
+- Run tests even if not explicitly requested.

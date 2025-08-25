@@ -5,6 +5,9 @@ import joblib
 from core.config import INPUT_EXAMPLE
 from fastapi import APIRouter, HTTPException
 from fastapi.concurrency import run_in_threadpool
+from loguru import logger
+from db import SessionLocal
+from models.log import RequestLog
 from models.prediction import (
     HealthResponse,
     MachineLearningDataInput,
@@ -44,9 +47,23 @@ async def predict(data_input: MachineLearningDataInput):
     except Exception as err:
         raise HTTPException(status_code=500, detail=f"Exception: {err}") from err
 
-    return MachineLearningResponse(
+    response = MachineLearningResponse(
         prediction=prediction, prediction_label=prediction_label
     )
+
+    try:
+        with SessionLocal() as db:
+            db.add(
+                RequestLog(
+                    request=json.dumps(data_input.model_dump()),
+                    response=json.dumps(response.model_dump()),
+                )
+            )
+            db.commit()
+    except Exception:
+        logger.exception("failed to log request")
+
+    return response
 
 
 @router.get(

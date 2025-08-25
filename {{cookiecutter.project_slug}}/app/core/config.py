@@ -15,6 +15,7 @@ MAX_CONNECTIONS_COUNT: int = config("MAX_CONNECTIONS_COUNT", cast=int, default=1
 MIN_CONNECTIONS_COUNT: int = config("MIN_CONNECTIONS_COUNT", cast=int, default=10)
 SECRET_KEY: Secret = config("SECRET_KEY", cast=Secret, default="")
 MEMOIZATION_FLAG: bool = config("MEMOIZATION_FLAG", cast=bool, default=True)
+DATABASE_URL: str = config("DATABASE_URL", default="sqlite:///./app.db")
 
 PROJECT_NAME: str = config("PROJECT_NAME", default="{{cookiecutter.project_name}}")
 
